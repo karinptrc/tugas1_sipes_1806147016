@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Pesawat</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<h2>Daftar Pesawat</h2>
+<div th:if="${size == 0}">
+    <h2> Belum memiliki pesawat. </h2>
+</div>
+<div th:unless="${size == 0}">
+    <table class="table bg-primary text-white">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>Nomor Seri</th>
+            <th>Tipe Pesawat</th>
+            <th>Jenis Pesawat</th>
+            <th>Maskapai</th>
+            <th>Aksi</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pesawat, iterationStatus : ${listPesawat}">
+            <td th:text="${iterationStatus.count}"></td>
+            <td th:text="${pesawat.nomorSeri}"></td>
+            <td th:text="${pesawat.tipe}"></td>
+            <td th:text="${pesawat.jenisPesawat}"></td>
+            <td th:text="${pesawat.maskapai}"></td>
+            <td>
+                <a class="btn btn-primary">Lihat</a>
+                <a class="btn btn-warning">Ubah</a>
+                <a class="btn btn-danger">Hapus</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

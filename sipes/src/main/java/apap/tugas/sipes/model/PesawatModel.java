@@ -15,7 +15,6 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "pesawat")
 public class PesawatModel implements Serializable{
-    //TODO
     @Id
     @Size(max = 20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
