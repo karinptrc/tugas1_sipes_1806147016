@@ -73,4 +73,24 @@ public class PenerbanganController {
         model.addAttribute("penerbangan", penerbangan);
         return "hapus-penerbangan";
     }
+
+    @RequestMapping(value = "/penerbangan/ubah/{idPenerbangan}", method = RequestMethod.GET)
+    private String ubahPenerbangan(
+            @PathVariable(value = "idPenerbangan") Long idPenerbangan,
+            Model model
+    ){
+        PenerbanganModel penerbangan = penerbanganService.getPenerbanganById(idPenerbangan);
+        model.addAttribute("penerbangan", penerbangan);
+        return "form-ubah-penerbangan";
+    }
+
+    @RequestMapping(value = "/penerbangan/ubah", method = RequestMethod.POST)
+    private String ubahPenerbanganSubmit(
+            @ModelAttribute PenerbanganModel penerbangan,
+            Model model
+    ){
+        penerbanganService.addPenerbangan(penerbangan);
+        model.addAttribute("kodePenerbangan", penerbangan.getNomorPenerbangan());
+        return "ubah-penerbangan";
+    }
 }

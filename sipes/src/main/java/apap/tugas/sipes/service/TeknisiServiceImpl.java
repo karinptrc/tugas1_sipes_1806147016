@@ -18,4 +18,9 @@ public class TeknisiServiceImpl implements TeknisiService{
     public List<TeknisiModel> getTeknisiList() {
         return teknisiDb.findByOrderByIdAsc();
     }
+
+    @Override
+    public TeknisiModel getTeknisiById(Long id) {
+        return teknisiDb.findById(id).get();
+    }
 }

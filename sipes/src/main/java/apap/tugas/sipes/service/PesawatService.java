@@ -1,7 +1,6 @@
 package apap.tugas.sipes.service;
 
-import apap.tugas.sipes.model.PesawatModel;
-import apap.tugas.sipes.model.PesawatTeknisiModel;
+import apap.tugas.sipes.model.*;
 
 import java.util.List;
 
@@ -14,4 +13,5 @@ public interface PesawatService {
     String buatNomorSeri(PesawatModel pesawat);
     PesawatModel deletePesawat(Long id);
     List<PesawatModel> getPesawatTua();
+    List<PesawatModel> getPesawatByTipe(TipeModel tipe);
 }

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Beranda</title>
 
     <!-- Link css -->
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
@@ -17,6 +17,8 @@
     <script th:src="@{/js/bootstrap.min.js}"></script>
 </head>
 <body>
+
+<nav th:replace="fragments/fragment :: navbar"></nav>
 <div class="container align-items-center">
 
     <div class="card justify-content-center rounded bg-primary text-white
@@ -31,21 +33,25 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <a th:href="@{/pesawat}" role="button"
                class="btn btn-link btn-primary btn-lg btn-block">Pesawat</a>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <a th:href="@{/penerbangan}" role="button"
                class="btn btn-link btn-primary btn-lg btn-block">Penerbangan</a>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <a th:href="@{/pesawat/cari-pesawat-tua}" role="button"
                class="btn btn-link btn-primary btn-lg btn-block">Cari</a>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <a th:href="@{/filter}" role="button"
                class="btn btn-link btn-primary btn-lg btn-block">Filter</a>
+        </div>
+        <div class="col-sm-2">
+            <a th:href="@{/bonus}" role="button"
+               class="btn btn-link btn-primary btn-lg btn-block">Bonus</a>
         </div>
     </div>
 </div>

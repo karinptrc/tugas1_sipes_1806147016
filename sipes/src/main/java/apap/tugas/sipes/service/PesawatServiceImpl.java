@@ -1,12 +1,12 @@
 package apap.tugas.sipes.service;
 
-import apap.tugas.sipes.model.PenerbanganModel;
-import apap.tugas.sipes.model.PesawatModel;
+import apap.tugas.sipes.model.*;
 import apap.tugas.sipes.repository.PesawatDb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.time.Year;
 import java.util.List;
 import java.util.Random;
@@ -70,6 +70,13 @@ public class PesawatServiceImpl implements PesawatService{
 
     @Override
     public List<PesawatModel> getPesawatTua() {
-        List<PesawatModel> listPesawat = pesawatDb.findByTanggalDibuatBefore(10);
+        LocalDate time = LocalDate.now().minusYears(10);
+        List<PesawatModel> listPesawat = pesawatDb.findByTanggalDibuatBefore(time);
+        return listPesawat;
+    }
+
+    @Override
+    public List<PesawatModel> getPesawatByTipe(TipeModel tipe) {
+        return pesawatDb.findPesawatModelsByTipe(tipe);
     }
 }

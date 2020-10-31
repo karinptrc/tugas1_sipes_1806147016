@@ -2,6 +2,7 @@ package apap.tugas.sipes.service;
 
 import apap.tugas.sipes.model.PenerbanganModel;
 import apap.tugas.sipes.model.PesawatModel;
+import apap.tugas.sipes.model.TipeModel;
 
 import java.util.List;
 

@@ -14,4 +14,6 @@ public interface PenerbanganDb extends JpaRepository<PenerbanganModel, Long>{
     List<PenerbanganModel> findByOrderByIdAsc();
     Optional<PenerbanganModel> findById(Long id);
     List<PenerbanganModel> findByPesawat(PesawatModel pesawat);
+    List<PenerbanganModel> findAllById(Long id);
+
 }

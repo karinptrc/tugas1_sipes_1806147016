@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Form Ubah Penerbangan</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
 
+<div class="layout d-flex flex-column justify-content-center" style="padding:30px;">
+    <div class="card" style="width:50%;align-self:center;">
+        <h3 class="card-header">Ubah Penerbangan</h3>
+        <div class="card-body">
+            <form th:action="@{/penerbangan/ubah}" th:object="${penerbangan}" method="POST">
+                <input type="hidden" th:field="*{id}">
+                <div class="form-group">
+                    <label for="nomorPenerbangan">NomorPenerbangan:</label>
+                    <input type="text" name="nomorPenerbangan" id="nomorPenerbangan" th:value="*{nomorPenerbangan}"
+                           class="form-control" placeholder="Nomor Penerbangan" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="kodeAsal">Kode Bandara Asal:</label>
+                    <input type="text" name="kodeBandaraAsal" id="kodeAsal" th:value="*{kodeBandaraAsal}"
+                           class="form-control" placeholder="Kode Bandara Asal" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="kodeTujuan">Kode Bandara Tujuan:</label>
+                    <input type="text" name="kodeBandaraTujuan" id="kodeTujuan" th:value="*{kodeBandaraTujuan}"
+                           class="form-control" placeholder="Kode Bandara Tujuan" required>
+                </div>
+                <div class="form-group">
+                    <label for="waktuBerangkat">Waktu Berangkat:</label>
+                    <input type="date" name="waktuBerangkat" th:value="*{waktuBerangkat}"
+                           id="waktuBerangkat" class="form-control" required>
+                </div>
+                    <button type="submit" name="save" class="btn btn-success">Simpan</button>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

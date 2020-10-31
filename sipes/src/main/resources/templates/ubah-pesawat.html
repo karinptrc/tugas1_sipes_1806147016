@@ -2,15 +2,15 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Penambahan Penerbangan</title>
+    <title>Ubah Pesawat</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
 <div class="container layout center">
-    <h2 th:text="'Penerbangan ' + ${kodePenerbangan} + ' berhasil ditambahkan'"> </h2>
-    <a href="/penerbangan" class="btn btn-primary">Kembali ke Daftar Penerbangan</a>
+    <h2 th:text="'Pesawat ' + ${pesawat.maskapai} + ' dengan nomor seri ' + ${pesawat.nomorSeri} + 'berhasil diubah'"> </h2>
+    <a href="/pesawat" class="btn btn-primary">Kembali ke Daftar Pesawat</a>
 </div>
 </body>
 </html>

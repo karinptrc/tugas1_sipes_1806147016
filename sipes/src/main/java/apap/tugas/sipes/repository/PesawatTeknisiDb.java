@@ -13,4 +13,5 @@ import java.util.List;
 public interface PesawatTeknisiDb extends JpaRepository<PesawatTeknisiModel, Long> {
     List<PesawatTeknisiModel> findPesawatTeknisiModelsByPesawatId(Long id);
     void deleteAllByPesawatId(Long id);
+    List<PesawatTeknisiModel> findPesawatTeknisiModelsByTeknisiId(Long id);
 }

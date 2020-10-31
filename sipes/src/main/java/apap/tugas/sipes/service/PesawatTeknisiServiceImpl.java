@@ -34,4 +34,9 @@ public class PesawatTeknisiServiceImpl implements PesawatTeknisiService{
     public void deleteRelasi(Long idPesawat) {
         pesawatTeknisiDb.deleteAllByPesawatId(idPesawat);
     }
+
+    @Override
+    public List<PesawatTeknisiModel> getPesawatByTeknisi(Long id) {
+        return pesawatTeknisiDb.findPesawatTeknisiModelsByTeknisiId(id);
+    }
 }

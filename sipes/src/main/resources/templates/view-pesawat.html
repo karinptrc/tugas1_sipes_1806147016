@@ -54,6 +54,15 @@
         </div>
 
         <div class="col-sm-8 justify-content-start mt-2 layout" style="font-size: small">
+            <form th:action="@{/pesawat/} + ${pesawat.id} + @{/tambah-penerbangan}" method="POST" th:object="${penerbanganBaru}">
+                <select class="custom-select custom-select-sm" th:field="*{id}">
+                    <option th:each="penerbangan:${listPenerbanganBaru}"
+                            th:value="${penerbangan.id}"
+                            th:text="${penerbangan.nomorPenerbangan}">
+                    </option>
+                </select>
+                <button class="btn btn-primary align-content-center" type="submit">Simpan</button>
+            </form>
             <div th:if="${sizeP == 0}">
                 <h2 th:text="'Pesawat belum memiliki penerbangan'"></h2>
             </div>

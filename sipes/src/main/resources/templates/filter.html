@@ -16,6 +16,7 @@
                 <div class="form-group">
                     <label for="penerbangan">Penerbangan:</label>
                     <select name="penerbangan" id="penerbangan" class="form-control">
+                        <option value="" disabled selected>Pilih penerbangan</option>
                         <option th:each="penerbangan: ${listPenerbangan}" th:value="${penerbangan.id}"
                                 th:text="${penerbangan.nomorPenerbangan}"></option>
                     </select>
@@ -24,6 +25,7 @@
                 <div class="form-group">
                     <label for="tipe">Tipe:</label>
                     <select name="tipe" id="tipe" class="form-control">
+                        <option value="" disabled selected>Pilih tipe</option>
                         <option th:each="tipe: ${listTipe}" th:value="${tipe.id}"
                                 th:text="${tipe.nama}"></option>
                     </select>
@@ -31,6 +33,7 @@
                 <div>
                     <label for="teknisi">Teknisi:</label>
                     <select name="teknisi" id="teknisi" class="form-control">
+                        <option value="" disabled selected>Pilih teknisi</option>
                         <option th:each="teknisi: ${listTeknisi}" th:value="${teknisi.id}"
                                 th:text="${teknisi.nama}"></option>
                     </select>
@@ -40,6 +43,41 @@
             </form>
         </div>
     </div>
+</div>
+
+<h2 class="mt-5 text-center title layout" >Daftar Pesawat</h2>
+<div class="container-sm text-center" th:if="${size == 0}">
+    <h2> Belum memiliki pesawat. </h2>
+</div>
+
+<div class="container-sm" th:unless="${size == 0}">
+    <table class="table rounded">
+        <thead class="thead-primary text-white text-center">
+        <tr>
+            <th>No</th>
+            <th>Nomor Seri</th>
+            <th>Tipe Pesawat</th>
+            <th>Jenis Pesawat</th>
+            <th>Maskapai</th>
+            <th>Aksi</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="text-center" th:each="pesawat, iterationStatus : ${listPesawat}">
+            <td th:text="${iterationStatus.count}"></td>
+            <td th:text="${pesawat.nomorSeri}"></td>
+            <td th:text="${pesawat.tipe.nama}"></td>
+            <td th:if="${pesawat.jenisPesawat == '1'}" th:text="Komersial"></td>
+            <td th:unless="${pesawat.jenisPesawat == '1'}" th:text="Militer"></td>
+            <td th:text="${pesawat.maskapai}"></td>
+            <td>
+                <a th:href="@{/pesawat/}+${pesawat.id}" class="btn btn-primary">Lihat</a>
+                <a th:href="@{/pesawat/ubah/}+${pesawat.id}"class="btn btn-warning">Ubah</a>
+                <a th:href="@{/pesawat/hapus/}+${pesawat.id}"class="btn btn-danger">Hapus</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

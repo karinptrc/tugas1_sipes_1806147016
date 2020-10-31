@@ -8,4 +8,5 @@ public interface PesawatTeknisiService {
     List<PesawatTeknisiModel> getListTeknisi(Long id);
     PesawatTeknisiModel addPesawatTeknisi(PesawatTeknisiModel relasi);
     void deleteRelasi(Long idPesawat);
+    List<PesawatTeknisiModel> getPesawatByTeknisi(Long id);
 }

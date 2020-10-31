@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface TeknisiService {
     List<TeknisiModel> getTeknisiList();
+    TeknisiModel getTeknisiById(Long id);
 }

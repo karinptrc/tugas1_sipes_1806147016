@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Pesawat</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+
+<h2 class="mt-5 text-center title layout" >Daftar Pesawat</h2>
+<div class="layout center">
+    <div class="container-sm text-center" th:if="${size == 0}">
+        <h2> Belum memiliki pesawat. </h2>
+    </div>
+
+    <div class="container-sm" th:unless="${size == 0}">
+        <table class="table rounded">
+            <thead class="thead-primary text-white text-center">
+            <tr>
+                <th>No</th>
+                <th>Nomor Seri</th>
+                <th>Tipe Pesawat</th>
+                <th>Jenis Pesawat</th>
+                <th>Maskapai</th>
+                <th>Jumlah Teknisi</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="text-center" th:each="pesawat, iterationStatus : ${listPesawat}">
+                <td th:text="${iterationStatus.count}"></td>
+                <td th:text="${pesawat.nomorSeri}"></td>
+                <td th:text="${pesawat.tipe.nama}"></td>
+                <td th:if="${pesawat.jenisPesawat == '1'}" th:text="Komersial"></td>
+                <td th:unless="${pesawat.jenisPesawat == '1'}" th:text="Militer"></td>
+                <td th:text="${pesawat.maskapai}"></td>
+                <td th:text="${pesawat.listPesawatTeknisi.size()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -40,7 +40,7 @@
             <td th:text="${penerbangan.waktuBerangkat}"></td>
             <td>
                 <a th:href="@{/penerbangan/}+${penerbangan.id}" class="btn btn-primary">Lihat</a>
-                <a th:href="@{/penerbangan/ubah}+${penerbangan.id}" class="btn btn-warning">Ubah</a>
+                <a th:href="@{/penerbangan/ubah/}+${penerbangan.id}" class="btn btn-warning">Ubah</a>
                 <a th:href="@{/penerbangan/hapus/}+${penerbangan.id}" class="btn btn-danger">Hapus</a>
             </td>
         </tr>

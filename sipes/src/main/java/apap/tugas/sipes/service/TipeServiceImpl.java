@@ -18,4 +18,9 @@ public class TipeServiceImpl implements TipeService{
     public List<TipeModel> getTipeList() {
         return tipeDb.findByOrderByIdAsc();
     }
+
+    @Override
+    public TipeModel getTipeById(Long id) {
+        return tipeDb.findById(id).get();
+    }
 }
