@@ -7,6 +7,8 @@
     <!-- Link css -->
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+
     <!-- Link js -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -15,20 +17,35 @@
     <script th:src="@{/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<div class="d-inline-block mx-auto my-auto">
-    <div class="p-4 container-fluid bg-primary text-white">
-        <h3>Selamat Datang di SIPESAWAT!</h3>
+<div class="container align-items-center">
+
+    <div class="card justify-content-center rounded bg-primary text-white
+                my-5 py-5">
+            <div class="card-body">
+                <h2 class="text-center"> Selamat Datang di SIPESAWAT! </h2>
+            </div>
     </div>
 
-    <div class="container-fluid justify-content-center">
-        <h4 class="d-flex">Daftar Fitur:</h4>
-        <div class="d-flex">
-            <div class="m-3 p-2 bd-highlight bg-primary">
-                <td><a th:href="@{/pesawat}">Pesawat</a></td>
-            </div>
-            <div class="m-3 p-2 bd-highlight bg-primary">Penerbangan</div>
-            <div class="m-3 p-2 bd-highlight bg-primary">Cari</div>
-            <div class="m-3 p-2 bd-highlight bg-primary">Filter</div>
+    <div class="d-flex justify-content-center my-3">
+        <h4>Daftar Fitur:</h4>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-sm-3">
+            <a th:href="@{/pesawat}" role="button"
+               class="btn btn-link btn-primary btn-lg btn-block">Pesawat</a>
+        </div>
+        <div class="col-sm-3">
+            <a th:href="@{/penerbangan}" role="button"
+               class="btn btn-link btn-primary btn-lg btn-block">Penerbangan</a>
+        </div>
+        <div class="col-sm-3">
+            <a th:href="@{/pesawat/cari-pesawat-tua}" role="button"
+               class="btn btn-link btn-primary btn-lg btn-block">Cari</a>
+        </div>
+        <div class="col-sm-3">
+            <a th:href="@{/filter}" role="button"
+               class="btn btn-link btn-primary btn-lg btn-block">Filter</a>
         </div>
     </div>
 </div>

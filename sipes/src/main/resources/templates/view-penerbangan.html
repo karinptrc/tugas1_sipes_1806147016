@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lihat Penerbangan</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+
+<h2 class="mt-5 text-center title layout">Informasi Penerbangan</h2>
+<div class="container info mt-2 layout">
+    <h3 th:text="'Kode Penerbangan: ' + ${penerbangan.nomorPenerbangan}"></h3>
+    <h3 th:text="'Kode Bandara Asal: ' + ${penerbangan.kodeBandaraAsal}"></h3>
+    <h3 th:text="'Kode Bandara Tujuan: ' + ${penerbangan.kodeBandaraTujuan}"></h3>
+    <h3 th:text="'Waktu Berangkat: ' + ${penerbangan.waktuBerangkat}"></h3>
+    <div th:if="${nomorSeri == null}">
+        <h3 th:text="Nomor Seri: Belum di-assign pesawat"></h3>
+    </div>
+    <h3 th:text="'Nomor Seri: ' + ${penerbangan.pesawat.nomorSeri}"></h3>
+</div>
+</body>
+</html>

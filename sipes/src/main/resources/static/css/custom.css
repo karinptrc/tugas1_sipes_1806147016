@@ -1,0 +1,55 @@
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.title {
+    text-align: center;
+    font-weight: bold;
+}
+
+.layout {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    /*border-style: dashed;*/
+    /*border-color: #0495c9;*/
+    /*border-radius: 20px;*/
+    /*padding: 10px;*/
+}
+
+.info-tabel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+}
+
+.info > h3 {
+    font-size: medium;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #0495c9;
+    border-color: #357ebd; /*set the color you want here*/
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #00b3db;
+    border-color: #285e8e; /*set the color you want here*/
+}
+
+.thead-primary{
+    background-color: #0495c9;
+}

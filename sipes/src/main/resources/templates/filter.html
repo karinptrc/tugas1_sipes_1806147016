@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<div class="layout d-flex flex-column justify-content-center" style="padding:30px;">
+    <div class="card" style="width:50%;align-self:center;">
+        <h3 class="card-header">Filter</h3>
+        <div class="card-body">
+            <form th:action="@{/filter}" method="POST">
+                <div class="form-group">
+                    <label for="penerbangan">Penerbangan:</label>
+                    <select name="penerbangan" id="penerbangan" class="form-control">
+                        <option th:each="penerbangan: ${listPenerbangan}" th:value="${penerbangan.id}"
+                                th:text="${penerbangan.nomorPenerbangan}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipe">Tipe:</label>
+                    <select name="tipe" id="tipe" class="form-control">
+                        <option th:each="tipe: ${listTipe}" th:value="${tipe.id}"
+                                th:text="${tipe.nama}"></option>
+                    </select>
+                </div>
+                <div>
+                    <label for="teknisi">Teknisi:</label>
+                    <select name="teknisi" id="teknisi" class="form-control">
+                        <option th:each="teknisi: ${listTeknisi}" th:value="${teknisi.id}"
+                                th:text="${teknisi.nama}"></option>
+                    </select>
+                </div>
+                <br>
+                <button type="submit" name="save" class="btn btn-success">Cari</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

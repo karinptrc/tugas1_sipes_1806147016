@@ -1,13 +1,17 @@
 package apap.tugas.sipes.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.apache.tomcat.jni.Local;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.w3c.dom.NamedNodeMap;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -16,7 +20,6 @@ import javax.validation.constraints.Size;
 @Table(name = "pesawat")
 public class PesawatModel implements Serializable{
     @Id
-    @Size(max = 20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -37,7 +40,8 @@ public class PesawatModel implements Serializable{
 
     @NotNull
     @Column(name = "tanggalDibuat")
-    private Date tanggalDibuat;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate tanggalDibuat;
 
     @NotNull
     @Column(name = "jenisPesawat")
@@ -52,7 +56,7 @@ public class PesawatModel implements Serializable{
     @JsonIgnore
     private TipeModel tipe;
 
-    @OneToMany(mappedBy = "pesawat", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pesawat", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private List<PesawatTeknisiModel> listPesawatTeknisi;
 
     public Long getId() {
@@ -87,11 +91,11 @@ public class PesawatModel implements Serializable{
         this.tempatDibuat = tempatDibuat;
     }
 
-    public Date getTanggalDibuat() {
+    public LocalDate getTanggalDibuat() {
         return tanggalDibuat;
     }
 
-    public void setTanggalDibuat(Date tanggalDibuat) {
+    public void setTanggalDibuat(LocalDate tanggalDibuat) {
         this.tanggalDibuat = tanggalDibuat;
     }
 
@@ -117,5 +121,13 @@ public class PesawatModel implements Serializable{
 
     public void setTipe(TipeModel tipe) {
         this.tipe = tipe;
+    }
+
+    public List<PesawatTeknisiModel> getListPesawatTeknisi() {
+        return listPesawatTeknisi;
+    }
+
+    public void setListPesawatTeknisi(List<PesawatTeknisiModel> listPesawatTeknisi) {
+        this.listPesawatTeknisi = listPesawatTeknisi;
     }
 }

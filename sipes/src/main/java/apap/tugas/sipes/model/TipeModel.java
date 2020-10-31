@@ -10,7 +10,6 @@ import java.util.List;
 @Table(name = "tipe")
 public class TipeModel implements Serializable {
     @Id
-    @Size(max = 20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

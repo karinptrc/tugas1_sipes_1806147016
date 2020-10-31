@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lihat Pesawat</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<div>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+
+<h2 class="mt-5 text-center title layout">Informasi Pesawat</h2>
+    <div class="container info mt-2 layout">
+        <h3 th:text="'Nomor Seri Pesawat: ' + ${pesawat.nomorSeri}"></h3>
+        <h3 th:text="'Jenis Pesawat: ' + ${pesawat.jenisPesawat}"></h3>
+        <h3 th:text="'Tipe Pesawat: ' + ${pesawat.tipe.nama}"></h3>
+        <h3 th:text="'Maskapai: ' + ${pesawat.maskapai}"></h3>
+        <h3 th:text="'Tempat Dibuat: ' + ${pesawat.tempatDibuat}"></h3>
+        <h3 th:text="'Tanggal Dibuat: ' + ${pesawat.tanggalDibuat}"></h3>
+    </div>
+<div class=" container-fluid">
+    <div class="row">
+        <div class="col-sm-4 mt-2 layout" >
+            <h2 class="mt-5 text-center title layout">Daftar Teknisi:</h2>
+        </div>
+        <div class="col-sm-8 mt-2 layout" style="font-size: small">
+            <h2 class="mt-5 text-center title layout">Daftar Penerbangan:</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 justify-content-start mt-2 layout" style="font-size: small">
+            <div th:if="${sizeT == 0}">
+                <h2 th:text="'Pesawat belum memiliki teknisi'"></h2>
+            </div>
+            <div th:unless="${sizeT == 0}">
+                <table class="table rounded">
+                    <thead class="thead-primary text-white text-center">
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Nomor Telepon</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="text-center" th:each="teknisi, iterationStatus : ${listTeknisi}">
+                        <td th:text="${iterationStatus.count}"></td>
+                        <td th:text="${teknisi.nama}"></td>
+                        <td th:text="${teknisi.nomorTelepon}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-sm-8 justify-content-start mt-2 layout" style="font-size: small">
+            <div th:if="${sizeP == 0}">
+                <h2 th:text="'Pesawat belum memiliki penerbangan'"></h2>
+            </div>
+            <div th:unless="${sizeP == 0}">
+                <table class="table rounded">
+                    <thead class="thead-primary text-white text-center">
+                    <tr>
+                        <th>No</th>
+                        <th>Kode Penerbangan</th>
+                        <th>Bandara Asal</th>
+                        <th>Bandara Tujuan</th>
+                        <th>Waktu Berangkat</th>
+                        <th>Aksi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="text-center" th:each="penerbangan, iterationStatus : ${listPenerbangan}">
+                        <td th:text="${iterationStatus.count}"></td>
+                        <td th:text="${penerbangan.nomorPenerbangan}"></td>
+                        <td th:text="${penerbangan.kodeBandaraAsal}"></td>
+                        <td th:text="${penerbangan.kodeBandaraTujuan}"></td>
+                        <td th:text="${penerbangan.waktuBerangkat}"></td>
+                        <td>
+                            <a th:href="@{/penerbangan/}+${penerbangan.id}"
+                               class="btn btn-primary" style="font-size: small">Lihat</a>
+                            <a class="btn btn-warning" style="font-size: small">Ubah</a>
+                            <a class="btn btn-danger" style="font-size: small">Hapus</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

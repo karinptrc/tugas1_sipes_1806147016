@@ -10,7 +10,6 @@ import java.util.List;
 @Table(name = "teknisi")
 public class TeknisiModel implements Serializable {
     @Id
-    @Size(max = 20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -24,7 +23,7 @@ public class TeknisiModel implements Serializable {
     @Column(name = "nomorTelepon")
     private String nomorTelepon;
 
-    @OneToMany(mappedBy = "teknisi", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "teknisi", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private List<PesawatTeknisiModel> listPesawatTeknisi;
 
     public Long getId() {

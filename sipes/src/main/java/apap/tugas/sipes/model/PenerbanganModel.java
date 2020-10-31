@@ -14,7 +14,6 @@ import java.sql.Date;
 @Table(name = "penerbangan")
 public class PenerbanganModel implements Serializable {
     @Id
-    @Size(max = 20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -37,8 +36,8 @@ public class PenerbanganModel implements Serializable {
     @Column(name = "nomorPenerbangan", unique = true)
     private String nomorPenerbangan;
 
-    @ManyToOne(fetch = FetchType.EAGER,optional = false)
-    @JoinColumn(name = "pesawatId", referencedColumnName = "id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER,optional = true)
+    @JoinColumn(name = "pesawatId", referencedColumnName = "id", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private PesawatModel pesawat;
