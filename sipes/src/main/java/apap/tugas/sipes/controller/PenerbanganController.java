@@ -42,7 +42,6 @@ public class PenerbanganController {
     ){
         PenerbanganModel penerbangan = penerbanganService.getPenerbanganById(idPenerbangan);
         model.addAttribute("penerbangan", penerbangan);
-        if (penerbangan.getPesawat() == null){model.addAttribute("nomorSeri", "null");}
         return "view-penerbangan";
     }
 

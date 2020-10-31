@@ -10,8 +10,8 @@
 <nav th:replace="fragments/fragment :: navbar"></nav>
 <div class="layout d-flex flex-column justify-content-center" style="padding:30px;">
     <div class="card" style="width:50%;align-self:center;">
-        <h3 class="card-header">Tambah Pesawat</h3>
-        <div class="card-body">
+        <h3 class="card-header bg-primary text-white text-center">Tambah Pesawat</h3>
+        <div class="card-body bg-white">
             <form th:action="@{/pesawat/tambah}" th:object="${totalTeknisi}" method="POST">
                 <div class="form-group">
                     <label for="maskapai">Maskapai:</label>
@@ -36,7 +36,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="tipe">Jenis:</label>
+                    <label for="tipe">Tipe:</label>
                     <select name="tipe" id="tipe" class="form-control">
                         <option th:each="tipe: ${listTipe}" th:value="${tipe.id}"
                                 th:text="${tipe.nama}"></option>

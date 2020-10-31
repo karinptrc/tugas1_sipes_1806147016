@@ -56,7 +56,7 @@ public class PesawatController {
         return "pesawat";
     }
 
-    @RequestMapping(value = "/pesawat/{idPesawat}/tambah-penerbangan", method = RequestMethod.GET)
+    @RequestMapping(value = "/pesawat/{idPesawat}", method = RequestMethod.GET)
     public String lihatPesawat(
             @PathVariable(value = "idPesawat") Long idPesawat,
             Model model
@@ -84,7 +84,7 @@ public class PesawatController {
         return "view-pesawat";
     }
 
-    @RequestMapping(value = "/pesawat/{idPesawat}", method = RequestMethod.POST)
+    @RequestMapping(value = "/pesawat/{idPesawat}/tambah-penerbangan", method = RequestMethod.POST)
     public String lihatPesawatSubmit(
             @PathVariable(value = "idPesawat") Long idPesawat,
             @ModelAttribute PenerbanganModel penerbangan,
@@ -210,8 +210,6 @@ public class PesawatController {
         List<TeknisiModel> listTeknisiId = teknisiService.getTeknisiList();
         PesawatModel pesawat = pesawatService.getPesawatById(idPesawat);
         model.addAttribute("totalTeknisi", pesawat);
-        model.addAttribute("listTipe",listTipe);
-        model.addAttribute("listTeknisi",listTeknisiId);
         return "form-ubah-pesawat";
     }
 
@@ -219,57 +217,14 @@ public class PesawatController {
     private String ubahPesawatSubmit(
             @ModelAttribute PesawatModel totalTeknisi,
             Model model
-    ){
+    ) {
         String nomorSeri = pesawatService.buatNomorSeri(totalTeknisi);
         totalTeknisi.setNomorSeri(nomorSeri);
 
-        //Cek duplikat teknisi
-        Set<PesawatTeknisiModel> temp = new HashSet<PesawatTeknisiModel>();
-        temp.addAll(totalTeknisi.getListPesawatTeknisi());
-        ArrayList<PesawatTeknisiModel> idTeknisi = new ArrayList<PesawatTeknisiModel>();
-        idTeknisi.addAll(temp);
-
         PesawatModel pesawatBaru = pesawatService.addPesawat(totalTeknisi);
 
-        for (PesawatTeknisiModel teknisi : idTeknisi){
-            PesawatTeknisiModel relasiBaru = new PesawatTeknisiModel();
-            relasiBaru.setPesawat(pesawatBaru);
-            relasiBaru.setTeknisi(teknisi.getTeknisi());
-            pesawatTeknisiService.addPesawatTeknisi(relasiBaru);
-        }
         model.addAttribute("pesawat", pesawatBaru);
         return "ubah-pesawat";
-    }
-    @RequestMapping(value = "/pesawat/ubah/{id}", method = RequestMethod.POST, params = {"addOption"})
-    private String addOptionUbah(
-            @ModelAttribute PesawatModel totalTeknisi,
-            Model model
-    ){
-        PesawatTeknisiModel teknisi = new PesawatTeknisiModel();
-        teknisi.setPesawat(totalTeknisi);
-        totalTeknisi.getListPesawatTeknisi().add(teknisi);
-        List<TipeModel> listTipe = tipeService.getTipeList();
-        List<TeknisiModel> listTeknisiId = teknisiService.getTeknisiList();
-        model.addAttribute("totalTeknisi", totalTeknisi);
-        model.addAttribute("listTipe",listTipe);
-        model.addAttribute("listTeknisi",listTeknisiId);
-        return "form-ubah-pesawat";
-    }
-
-    @RequestMapping(value = "/pesawat/ubah/{id}", method = RequestMethod.POST, params = {"removeOption"})
-    private String removeOptionUbah(
-            @ModelAttribute PesawatModel totalTeknisi,
-            Model model,
-            HttpServletRequest req
-    ){
-        Integer rowId = Integer.valueOf(req.getParameter("removeOption"));
-        totalTeknisi.getListPesawatTeknisi().remove(rowId.intValue());
-        List<TipeModel> listTipe = tipeService.getTipeList();
-        List<TeknisiModel> listTeknisiId = teknisiService.getTeknisiList();
-        model.addAttribute("totalTeknisi", totalTeknisi);
-        model.addAttribute("listTipe",listTipe);
-        model.addAttribute("listTeknisi",listTeknisiId);
-        return "form-ubah-pesawat";
     }
 
     @RequestMapping(value = "/filter", method = RequestMethod.GET)
@@ -335,7 +290,7 @@ public class PesawatController {
         return "filter";
     }
 
-    @RequestMapping(value = "/cari", method = RequestMethod.GET)
+    @RequestMapping(value = "/pesawat/pesawat-tua", method = RequestMethod.GET)
     private String cari(
             Model model
     ){

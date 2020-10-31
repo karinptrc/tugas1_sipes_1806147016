@@ -11,8 +11,8 @@
 
 <div class="layout d-flex flex-column justify-content-center" style="padding:30px;">
     <div class="card" style="width:50%;align-self:center;">
-        <h3 class="card-header">Ubah Penerbangan</h3>
-        <div class="card-body">
+        <h3 class="card-header bg-primary text-white text-center">Ubah Penerbangan</h3>
+        <div class="card-body bg-white">
             <form th:action="@{/penerbangan/ubah}" th:object="${penerbangan}" method="POST">
                 <input type="hidden" th:field="*{id}">
                 <div class="form-group">

@@ -88,8 +88,10 @@
                         <td>
                             <a th:href="@{/penerbangan/}+${penerbangan.id}"
                                class="btn btn-primary" style="font-size: small">Lihat</a>
-                            <a class="btn btn-warning" style="font-size: small">Ubah</a>
-                            <a class="btn btn-danger" style="font-size: small">Hapus</a>
+                            <a th:href="@{/penerbangan/ubah/}+${penerbangan.id}"
+                               class="btn btn-warning" style="font-size: small">Ubah</a>
+                            <a th:href="@{/penerbangan/hapus/}+${penerbangan.id}"
+                               class="btn btn-danger" style="font-size: small">Hapus</a>
                         </td>
                     </tr>
                     </tbody>

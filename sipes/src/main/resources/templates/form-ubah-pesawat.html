@@ -10,11 +10,12 @@
 <nav th:replace="fragments/fragment :: navbar"></nav>
 
 <div class="layout d-flex flex-column justify-content-center" style="padding:30px;">
-    <h3 class="card-header">Ubah Pesawat</h3>
+    <h3 class="card-header bg-primary text-white text-center">Ubah Pesawat</h3>
 
-    <div class="card-body">
-        <form th:action="@{/pesawat/ubah/}" th:object="${totalTeknisi}" method="POST">
+    <div class="card-body bg-white">
+        <form th:action="@{/pesawat/ubah}" th:object="${totalTeknisi}" method="POST">
             <input type="hidden" th:field="*{id}">
+            <input type="hidden" th:field="*{tipe}">
             <div class="form-group">
                 <label for="maskapai">Maskapai:</label>
                 <input type="text" class="form-control" name="maskapai"
@@ -44,26 +45,7 @@
                     <option value="2" th:text="Militer"></option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="tipe">Tipe:</label>
-                <select name="tipe" id="tipe"
-                        th:value="*{tipe}"class="form-control">
-                    <option th:each="tipe: ${listTipe}" th:value="${tipe.id}"
-                            th:text="${tipe.nama}"></option>
-                </select>
-            </div>
-            <div th:each="teknisi, indexStat : *{listPesawatTeknisi}">
-                <label for="teknisi">Teknisi:</label>
-                <select name="teknisi" id="teknisi" class="form-control" th:field="*{listPesawatTeknisi[__${indexStat.index}__].teknisi}">
-                    <option th:each="teknisi: ${listTeknisi}" th:value="${teknisi.id}"
-                            th:text="${teknisi.nama}"></option>
-                </select>
-                <button type="submit" name="removeOption"
-                        th:value="${indexStat.index}" class="btn btn-sm btn-outline-danger"> Hapus </button>
-            </div>
-            <br>
-            <button type="submit" class="btn btn-info" name="addOption">Tambah Teknisi</button>
-            <button type="submit" name="save" class="btn btn-success">Simpan</button>
+            <button type="submit" class="btn btn-success">Simpan</button>
         </form>
     </div>
 </div>

@@ -6,6 +6,11 @@
     margin-top: 30px;
 }
 
+.card-header{
+    color: #fff;
+    background-color: #0495c9;
+}
+
 .title {
     text-align: center;
     font-weight: bold;

@@ -16,10 +16,12 @@
     <h3 th:text="'Kode Bandara Asal: ' + ${penerbangan.kodeBandaraAsal}"></h3>
     <h3 th:text="'Kode Bandara Tujuan: ' + ${penerbangan.kodeBandaraTujuan}"></h3>
     <h3 th:text="'Waktu Berangkat: ' + ${penerbangan.waktuBerangkat}"></h3>
-    <div th:if="${nomorSeri == null}">
+    <div th:if="${penerbangan.pesawat != null}">
+        <h3 th:text="'Nomor Seri: ' + ${penerbangan.pesawat.nomorSeri}"></h3>
+    </div>
+    <div th:unless="${penerbangan.pesawat != null}">
         <h3 th:text="Nomor Seri: Belum di-assign pesawat"></h3>
     </div>
-    <h3 th:text="'Nomor Seri: ' + ${penerbangan.pesawat.nomorSeri}"></h3>
 </div>
 </body>
 </html>
